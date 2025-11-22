@@ -1,0 +1,12 @@
+{
+    "ar": {
+        "hero_title": "عنوان عربي",
+        "hero_desc": "وصف عربي",
+        "preloader_title": "تحميل..."
+    },
+    "en": {
+        "hero_title": "English Title",
+        "hero_desc": "English Description",
+        "preloader_title": "Loading..."
+    }
+}

@@ -1,0 +1,380 @@
+/* Global styles (RTL template) */
+/* Use this file for global utilities and component base styles.
+   For production: it's recommended to compile only used Tailwind utilities. */
+
+/* ======================== */
+/* ===== FONT IMPORTS ===== */
+/* ======================== */
+@font-face {
+  font-family: 'Linaround';
+  src: url('/../assets/fonts/Linaround-Light-scaled-up-with-eng-chars.ttf') format('truetype');
+  font-weight: 300;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Linaround';
+  src: url('/../assets/fonts/Linaround-Regular-scaled-up-with-eng-chars.ttf') format('truetype');
+  font-weight: 400;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Linaround';
+  src: url('/../assets/fonts/Linaround-Medium-scaled-up-with-eng-chars.ttf') format('truetype');
+  font-weight: 500;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Linaround';
+  src: url('/../assets/fonts/Linaround-SemiBold-scaled-up-with-eng-chars.ttf') format('truetype');
+  font-weight: 600;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Linaround';
+  src: url('/../assets/fonts/Linaround-Bold-scaled-up-with-eng-chars.ttf') format('truetype');
+  font-weight: 700;
+  font-display: swap;
+}
+
+/* =========================== */
+/* ===== GLOBAL SETTINGS ===== */
+/* =========================== */
+
+
+:root {
+  --primary-color: #00D38D;
+  --secondary-color: #00B8FB;
+  --third-color: #091333;
+  --text-muted: #475569;
+  /* Better contrast for body text */
+  --base-font: "Linaround", sans-serif;
+}
+
+/* Ensure proper contrast for text */
+.text-third\/70 {
+  color: #475569 !important;
+  /* WCAG AA compliant */
+}
+
+.text-third\/80 {
+  color: #334155 !important;
+  /* WCAG AA compliant */
+}
+
+/* Accessibility: respect prefers-reduced-motion */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Base */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  overflow-x: hidden;
+  position: relative;
+  font-family: var(--base-font);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  color: #091333;
+  background: #ffffff;
+  padding-top: 80px;
+}
+
+@media (min-width: 768px) {
+  body {
+    padding-top: 88px;
+  }
+}
+
+
+/* Scrollbar (webkit) */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: white;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--primary-color);
+  border-radius: 999px;
+}
+
+/* Firefox scrollbar */
+* {
+  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  scrollbar-width: thin;
+  scrollbar-color: var(--primary-color) white;
+}
+
+/* Preloader transition */
+#preloader.hide {
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity .5s ease, visibility .5s ease;
+}
+
+.skip-link {
+  position: absolute;
+  top: -40px;
+  left: 0;
+  background: var(--primary-color);
+  color: white;
+  padding: 8px 16px;
+  z-index: 100;
+}
+
+.skip-link:focus {
+  top: 0;
+}
+
+/* ============================ */
+/* ===== SCROLL TOP BTN ======= */
+/* ============================ */
+#scrollTopBtn {
+  transform: translateY(20px);
+}
+
+#scrollTopBtn.show {
+  opacity: 1 !important;
+  pointer-events: auto !important;
+  transform: translateY(0);
+}
+
+#scrollTopBtn.show:hover {
+  animation: pulseGlow 1.5s infinite;
+}
+
+/* Header shadow on scroll */
+header.scrolled {
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+/* Sidebar active states */
+#mobileSidebar.active {
+  transform: translateX(0);
+}
+
+#sidebarOverlay.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* Menu toggle animation */
+#menuToggle.active span:nth-child(1) {
+  transform: rotate(45deg) translate(5px, 5px);
+}
+
+#menuToggle.active span:nth-child(2) {
+  opacity: 0;
+}
+
+#menuToggle.active span:nth-child(3) {
+  transform: rotate(-45deg) translate(5px, -5px);
+}
+
+/* Custom Animations */
+@keyframes float {
+
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-15px);
+  }
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes morphShape {
+
+  0%,
+  100% {
+    border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%;
+    transform: scale(1);
+  }
+
+  33% {
+    border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+    transform: scale(1.05);
+  }
+
+  66% {
+    border-radius: 30% 70% 60% 40% / 50% 60% 40% 60%;
+    transform: scale(0.95);
+  }
+}
+
+@keyframes scalePulse {
+
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 0.2;
+  }
+
+  50% {
+    transform: scale(1.1);
+    opacity: 0.3;
+  }
+}
+
+/* Adjust header spacing on mobile */
+@media (min-width: 768px) {
+  #home {
+    min-height: calc(100vh - 88px) !important;
+  }
+}
+
+/* Accessibility: Reduce motion for users who prefer it */
+@media (prefers-reduced-motion: reduce) {
+  [style*="animation"] {
+    animation: none !important;
+  }
+}
+
+
+/* Swiper Custom Styles */
+.testimonialsSwiper {
+  padding: 0 2rem;
+}
+
+.testimonialsSwiper .swiper-slide {
+  height: auto;
+  display: flex;
+}
+
+/* Pagination Styles */
+.testimonialsSwiper .swiper-pagination-bullet {
+  width: 10px;
+  height: 10px;
+  background: #00D38D;
+  opacity: 0.3;
+  transition: all 0.3s ease;
+}
+
+.testimonialsSwiper .swiper-pagination-bullet-active {
+  opacity: 1;
+  width: 24px;
+  border-radius: 5px;
+}
+
+/* Hide navigation buttons on mobile when they overlap */
+@media (max-width: 767px) {
+
+  .swiper-button-prev-custom,
+  .swiper-button-next-custom {
+    width: 40px;
+    height: 40px;
+  }
+
+  .swiper-button-prev-custom {
+    left: 0;
+  }
+
+  .swiper-button-next-custom {
+    right: 0;
+  }
+}
+
+/* Ensure proper spacing */
+@media (min-width: 768px) {
+  .testimonialsSwiper {
+    padding: 0;
+  }
+}
+
+/* Ensure image maintains aspect ratio */
+#trainer img {
+  aspect-ratio: 5 / 6;
+  object-fit: cover;
+}
+
+/* Subtle animation for decorative elements */
+@keyframes subtleFloat {
+
+  0%,
+  100% {
+    transform: translateY(0) rotate(12deg);
+  }
+
+  50% {
+    transform: translateY(-10px) rotate(12deg);
+  }
+}
+
+#trainer .absolute.border-4.border-primary\/40 {
+  animation: subtleFloat 4s ease-in-out infinite;
+}
+
+@keyframes subtleFloatReverse {
+
+  0%,
+  100% {
+    transform: translateY(0) rotate(-12deg);
+  }
+
+  50% {
+    transform: translateY(-8px) rotate(-12deg);
+  }
+}
+
+#trainer .absolute.border-4.border-secondary\/40 {
+  animation: subtleFloatReverse 5s ease-in-out infinite;
+}
+
+/* Ensure video iframe responsiveness */
+#free-lesson iframe,
+#free-lesson video {
+  border: none;
+}
+
+/* Optional: Add subtle animation to play button */
+@keyframes pulsePlay {
+
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+
+  50% {
+    transform: scale(1.05);
+    opacity: 0.9;
+  }
+}
+
+#free-lesson .fa-play {
+  animation: pulsePlay 2s ease-in-out infinite;
+}
+
+/* Reduce motion for accessibility */
+@media (prefers-reduced-motion: reduce) {
+  #free-lesson .fa-play {
+    animation: none;
+  }
+}
